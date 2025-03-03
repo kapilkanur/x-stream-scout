@@ -1,0 +1,4 @@
+twitter-to-kafka-service:
+  twitter-keywords:
+    - Java
+    - Kafka
