@@ -1,0 +1,5 @@
+twitter-to-kafka-service:
+  twitter-keywords:
+    - Java
+    - Kafka
+  welcome-message: "Welcome to the Twitter To Kafka Service Application"
