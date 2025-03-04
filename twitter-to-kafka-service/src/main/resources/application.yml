@@ -1,4 +1,6 @@
 twitter-to-kafka-service:
+  tweets:
+    source: in-app
   twitter-keywords:
     - Java
     - Kafka
