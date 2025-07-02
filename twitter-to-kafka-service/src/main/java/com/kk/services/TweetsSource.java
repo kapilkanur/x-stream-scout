@@ -8,6 +8,4 @@ public interface TweetsSource {
 
     List<Tweet> fetchTweets();
 
-
-
 }

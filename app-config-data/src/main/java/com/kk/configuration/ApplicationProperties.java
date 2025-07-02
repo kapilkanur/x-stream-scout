@@ -1,4 +1,4 @@
-package com.kk.configurations;
+package com.kk.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,8 +9,14 @@ import java.util.List;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "twitter-to-kafka-service")
-public class TwitterKeywordsData {
-
+public class ApplicationProperties {
+    private String welcomeMessage;
+    private Tweets tweets;
     private List<String> twitterKeywords;
 
+    @Data
+    public static class Tweets {
+        private String source;
+    }
 }
+
