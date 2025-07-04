@@ -7,10 +7,9 @@
         <groupId>com.kk</groupId>
         <artifactId>x-stream-scout</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kafka-admin</artifactId>
+    <artifactId>common-config</artifactId>
 
     <dependencies>
         <dependency>
@@ -18,18 +17,15 @@
             <artifactId>app-config-data</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
+            <artifactId>spring-boot</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kk</groupId>
-            <artifactId>common-config</artifactId>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
         </dependency>
     </dependencies>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
