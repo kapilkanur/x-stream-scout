@@ -41,6 +41,7 @@
         <spring.retry.version>2.0.11</spring.retry.version>
         <kafka.avro.serializer.version>8.0.0</kafka.avro.serializer.version>
         <jakarta.annotation>3.0.0</jakarta.annotation>
+        <aspectjweaver.version>1.9.24</aspectjweaver.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -83,6 +84,12 @@
                 <groupId>com.kk</groupId>
                 <artifactId>kafka-producer</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>io.confluent</groupId>

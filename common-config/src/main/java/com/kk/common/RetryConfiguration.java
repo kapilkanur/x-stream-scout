@@ -1,6 +1,7 @@
 package com.kk.common;
 
 import com.kk.configuration.RetryConfigurationData;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
@@ -15,6 +16,7 @@ public class RetryConfiguration {
         this.retryConfigurationData = retryConfigurationData;
     }
 
+    @Bean
     public RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
 
