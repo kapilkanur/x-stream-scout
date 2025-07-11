@@ -31,7 +31,7 @@ The project consists of multiple microservices:
 
 ---
 
-## 🚀 **Tech Stack**
+## **Tech Stack**
 - **Backend:** Spring Boot, Spring Cloud, Kafka, Elasticsearch, PostgreSQL  
 - **Event Processing:** Kafka Streams  
 - **Security:** Keycloak  
