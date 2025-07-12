@@ -11,11 +11,19 @@ public class KafkaStreamInitializer implements StreamInitializer {
     private final KafkaConfigurationData kafkaConfigurationData;
     private final KafkaAdminClient kafkaAdminClient;
 
-    public KafkaStreamInitializer(KafkaConfigurationData kafkaConfigurationData, KafkaAdminClient kafkaAdminClient) {
+    /**
+     * KafkaStreamInitializer constructor.
+     * @param kafkaConfigurationData KafkaConfigurationData
+     * @param kafkaAdminClient KafkaAdminClient
+     */
+    public KafkaStreamInitializer(final KafkaConfigurationData kafkaConfigurationData, final KafkaAdminClient kafkaAdminClient) {
         this.kafkaConfigurationData = kafkaConfigurationData;
         this.kafkaAdminClient = kafkaAdminClient;
     }
 
+    /**
+     * Initialization method.
+     */
     @Override
     public void init() {
         this.kafkaAdminClient.createTopics();

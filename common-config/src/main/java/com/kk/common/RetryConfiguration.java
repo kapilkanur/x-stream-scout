@@ -12,10 +12,18 @@ public class RetryConfiguration {
 
     private final RetryConfigurationData retryConfigurationData;
 
-    public RetryConfiguration(RetryConfigurationData retryConfigurationData) {
+    /**
+     * Constructor of RetryConfiguration.
+     * @param retryConfigurationData Retry configuration data
+     */
+    public RetryConfiguration(final RetryConfigurationData retryConfigurationData) {
         this.retryConfigurationData = retryConfigurationData;
     }
 
+    /**
+     * Create RetryTemplate.
+     * @return RetryTemplate
+     */
     @Bean
     public RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();

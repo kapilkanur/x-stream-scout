@@ -16,16 +16,28 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
     private final ApplicationProperties properties;
 
-    public TwitterToKafkaServiceApplication(ApplicationProperties properties) {
+    /**
+     * TwitterToKafkaServiceApplication constructor.
+     * @param properties
+     */
+    public TwitterToKafkaServiceApplication(final ApplicationProperties properties) {
         this.properties = properties;
     }
 
-    public static void main(String[] args) {
+    /**
+     * Main method.
+     * @param args
+     */
+    public static void main(final String[] args) {
         SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
     }
 
+    /**
+     * Run method.
+     * @param args
+     */
     @Override
-    public void run(String... args) {
+    public void run(final String... args) {
         LOG.info("Application started.");
         LOG.info("Keywords: {}", properties.getTwitterKeywords());
         LOG.info("Welcome Message: {}", properties.getWelcomeMessage());

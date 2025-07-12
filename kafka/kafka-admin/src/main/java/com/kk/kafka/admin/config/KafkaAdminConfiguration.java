@@ -15,10 +15,18 @@ public class KafkaAdminConfiguration {
 
     private final KafkaConfigurationData kafkaConfigurationData;
 
-    public KafkaAdminConfiguration(KafkaConfigurationData kafkaConfigurationData) {
+    /**
+     * KafkaAdminConfiguration constructor.
+     * @param kafkaConfigurationData KafkaAdminConfiguration
+     */
+    public KafkaAdminConfiguration(final KafkaConfigurationData kafkaConfigurationData) {
         this.kafkaConfigurationData = kafkaConfigurationData;
     }
 
+    /**
+     * Create AdminClient.
+     * @return AdminClient
+     */
     @Bean
     public AdminClient adminClient() {
         return AdminClient.create(Map.of(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG,

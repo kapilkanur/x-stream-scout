@@ -9,12 +9,20 @@ public class StreamStartupRunner implements CommandLineRunner {
 
     private final StreamInitializer streamInitializer;
 
-    public StreamStartupRunner(StreamInitializer streamInitializer) {
+    /**
+     * StreamStartupRunner constructor.
+     * @param streamInitializer StreamInitializer
+     */
+    public StreamStartupRunner(final StreamInitializer streamInitializer) {
         this.streamInitializer = streamInitializer;
     }
 
+    /**
+     * Run method.
+     * @param args
+     */
     @Override
-    public void run(String... args) {
+    public void run(final String... args) {
         streamInitializer.init();
     }
 }

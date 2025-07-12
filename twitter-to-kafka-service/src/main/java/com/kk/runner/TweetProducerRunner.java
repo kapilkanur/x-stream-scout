@@ -18,23 +18,36 @@ public class TweetProducerRunner {
     private final TweetsSource tweetsSource;
     private final TwitterStatusToAvroTransformer transformer;
     private final KafkaProducer<Long, TweetAvroModel> kafkaProducer;
+    private final int initialDelay = 10000;
+    private final int fixedRate = 5000;
+    private final long hashCode = 0xfffffff;
 
-    public TweetProducerRunner(KafkaConfigurationData kafkaConfigData,
-                               TweetsSource tweetsSource,
-                               TwitterStatusToAvroTransformer transformer,
-                               KafkaProducer<Long, TweetAvroModel> kafkaProducer) {
+    /**
+     * Constructor of TweetProducerRunner.
+     * @param kafkaConfigData KafkaConfigurationData
+     * @param tweetsSource TweetsSource
+     * @param transformer TwitterStatusToAvroTransformer
+     * @param kafkaProducer KafkaProducer<Long, TweetAvroModel>
+     */
+    public TweetProducerRunner(final KafkaConfigurationData kafkaConfigData,
+                               final TweetsSource tweetsSource,
+                               final TwitterStatusToAvroTransformer transformer,
+                               final KafkaProducer<Long, TweetAvroModel> kafkaProducer) {
         this.kafkaConfigData = kafkaConfigData;
         this.tweetsSource = tweetsSource;
         this.transformer = transformer;
         this.kafkaProducer = kafkaProducer;
     }
 
-    @Scheduled(initialDelay = 10000, fixedRate = 5000)
+    /**
+     * Produce tweets.
+     */
+    @Scheduled(initialDelay = initialDelay, fixedRate = fixedRate)
     public void produceTweets() {
-        List<Tweet> tweets = tweetsSource.fetchTweets();
+        final List<Tweet> tweets = tweetsSource.fetchTweets();
         tweets.forEach(tweet -> {
             TweetAvroModel model = transformer.getTwitterAvroModelFromStatus(tweet);
-            kafkaProducer.send(kafkaConfigData.getTopicName(), tweet.getId().hashCode() & 0xfffffffL, model);
+            kafkaProducer.send(kafkaConfigData.getTopicName(), tweet.getId().hashCode() & hashCode, model);
         });
     }
 }
