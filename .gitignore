@@ -23,8 +23,9 @@
 hs_err_pid*
 replay_pid*
 
-**/target/
-
 .DS_Store
 .idea/
-/logs/
+*/logs/
+
+**/target/
+/twitter-to-kafka-service/target/
