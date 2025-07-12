@@ -7,7 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class TwitterStatusToAvroTransformer {
 
-    public TweetAvroModel getTwitterAvroModelFromStatus(Tweet tweet) {
+    /**
+     * Get TweetAvroModel from status.
+     * @param tweet Tweet
+     * @return TweetAvroModel
+     */
+    public TweetAvroModel getTwitterAvroModelFromStatus(final Tweet tweet) {
         return TweetAvroModel.newBuilder()
                 .setId(tweet.getId())
                 .setUsername(tweet.getUsername())

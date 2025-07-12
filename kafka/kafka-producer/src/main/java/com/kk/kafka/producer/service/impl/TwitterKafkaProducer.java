@@ -16,12 +16,22 @@ public class TwitterKafkaProducer implements KafkaProducer<Long, TweetAvroModel>
 
     private final KafkaTemplate<Long, TweetAvroModel> kafkaTemplate;
 
-    public TwitterKafkaProducer(KafkaTemplate<Long, TweetAvroModel> kafkaTemplate) {
+    /**
+     * TwitterKafkaProducer constructor.
+     * @param kafkaTemplate KafkaTemplate<Long, TweetAvroModel>
+     */
+    public TwitterKafkaProducer(final KafkaTemplate<Long, TweetAvroModel> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
+    /**
+     * Send message.
+     * @param topicName Topic name
+     * @param key key
+     * @param message message
+     */
     @Override
-    public void send(String topicName, Long key, TweetAvroModel message) {
+    public void send(final String topicName, final Long key, final TweetAvroModel message) {
         LOG.info("Sending message='{}' to topic='{}'", message, topicName);
 
         kafkaTemplate.send(topicName, key, message)
@@ -36,6 +46,9 @@ public class TwitterKafkaProducer implements KafkaProducer<Long, TweetAvroModel>
                 });
     }
 
+    /**
+     * Close kafka producer.
+     */
     @PreDestroy
     public void close() {
         LOG.info("Closing Kafka producer!");

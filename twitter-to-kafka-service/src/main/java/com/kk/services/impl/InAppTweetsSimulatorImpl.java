@@ -28,6 +28,10 @@ public class InAppTweetsSimulatorImpl implements TweetsSource {
 
     private final Random random = new Random();
 
+    /**
+     * Get tweets.
+     * @return List<Tweet>
+     */
     @Override
     public List<Tweet> fetchTweets() {
         return List.of(generateTweet(), generateTweet(), generateTweet());

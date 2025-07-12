@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface TweetsSource {
 
+    /**
+     * Fetch tweets.
+     * @return List<Tweet>
+     */
     List<Tweet> fetchTweets();
 
 }

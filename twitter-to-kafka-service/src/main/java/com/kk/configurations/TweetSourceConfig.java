@@ -12,10 +12,18 @@ public class TweetSourceConfig {
 
     private final ApplicationProperties properties;
 
-    public TweetSourceConfig(ApplicationProperties properties) {
+    /**
+     * TweetSourceConfig constructor.
+     * @param properties properties
+     */
+    public TweetSourceConfig(final ApplicationProperties properties) {
         this.properties = properties;
     }
 
+    /**
+     * Set TweetsSource.
+     * @return TweetsSource
+     */
     @Bean
     public TweetsSource tweetsSource() {
         return "external".equalsIgnoreCase(properties.getTweets().getSource())
@@ -23,3 +31,4 @@ public class TweetSourceConfig {
                 : new InAppTweetsSimulatorImpl();
     }
 }
+

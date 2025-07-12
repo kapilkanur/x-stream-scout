@@ -20,12 +20,20 @@ public class KafkaProducerConfiguration<K extends Serializable, V extends Specif
     private final KafkaConfigurationData kafkaConfigurationData;
     private final KafkaProducerConfigurationData kafkaProducerConfigurationData;
 
-
-    public KafkaProducerConfiguration(KafkaConfigurationData kafkaConfigurationData, KafkaProducerConfigurationData kafkaProducerConfigurationData) {
+    /**
+     * KafkaProducerConfiguration constructor.
+     * @param kafkaConfigurationData KafkaConfigurationData
+     * @param kafkaProducerConfigurationData KafkaProducerConfigurationData
+     */
+    public KafkaProducerConfiguration(final KafkaConfigurationData kafkaConfigurationData, final KafkaProducerConfigurationData kafkaProducerConfigurationData) {
         this.kafkaConfigurationData = kafkaConfigurationData;
         this.kafkaProducerConfigurationData = kafkaProducerConfigurationData;
     }
 
+    /**
+     * Create producer configuration.
+     * @return producer configuration
+     */
     @Bean
     public Map<String, Object> producerConfig() {
         Map<String, Object> props = new HashMap<>();
@@ -33,8 +41,8 @@ public class KafkaProducerConfiguration<K extends Serializable, V extends Specif
         props.put(kafkaConfigurationData.getSchemaRegistryUrlKey(), kafkaConfigurationData.getSchemaRegistryUrl());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, kafkaProducerConfigurationData.getKeySerializerClass());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, kafkaProducerConfigurationData.getValueSerializerClass());
-        props.put(ProducerConfig.BATCH_SIZE_CONFIG, kafkaProducerConfigurationData.getBatchSize() *
-                kafkaProducerConfigurationData.getBatchSizeBoostFactor());
+        props.put(ProducerConfig.BATCH_SIZE_CONFIG, kafkaProducerConfigurationData.getBatchSize()
+                * kafkaProducerConfigurationData.getBatchSizeBoostFactor());
         props.put(ProducerConfig.LINGER_MS_CONFIG, kafkaProducerConfigurationData.getLingerMs());
         props.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, kafkaProducerConfigurationData.getCompressionType());
         props.put(ProducerConfig.ACKS_CONFIG, kafkaProducerConfigurationData.getAcks());
@@ -43,11 +51,19 @@ public class KafkaProducerConfiguration<K extends Serializable, V extends Specif
         return props;
     }
 
+    /**
+     * Set ProducerFactory.
+     * @return ProducerFactory<K, V>
+     */
     @Bean
     public ProducerFactory<K, V> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
+    /**
+     * Set KafkaTemplate.
+     * @return KafkaTemplate<K, V>
+     */
     @Bean
     public KafkaTemplate<K, V> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
