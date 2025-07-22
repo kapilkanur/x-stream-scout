@@ -29,3 +29,5 @@ replay_pid*
 
 **/target/
 /twitter-to-kafka-service/target/
+
+*.iml
