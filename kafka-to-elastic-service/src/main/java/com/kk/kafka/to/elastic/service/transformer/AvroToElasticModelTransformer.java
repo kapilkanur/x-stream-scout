@@ -13,7 +13,7 @@ public class AvroToElasticModelTransformer {
     /**
      * Get twitter index models.
      * @param avroModels
-     * @return
+     * @return List<TwitterIndexModel>
      */
     public List<TwitterIndexModel> getElasticModels(final List<TweetAvroModel> avroModels) {
         return avroModels.stream()
